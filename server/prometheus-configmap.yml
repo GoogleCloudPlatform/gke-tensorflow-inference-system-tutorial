@@ -32,17 +32,8 @@ data:
       # The job name is added as a label `job=<job_name>` to any timeseries scraped from this config.
       - job_name: 'prometheus'
 
-        kubernetes_sd_configs:
-        - role: endpoints
+        # metrics_path defaults to '/metrics'
+        # scheme defaults to 'http'.
 
-        relabel_configs:
-        - source_labels:
-          - __meta_kubernetes_namespace
-          - __meta_kubernetes_service_name
-          regex: default;kubernetes
-          action: drop
-        - source_labels:
-          - __meta_kubernetes_namespace
-          - __meta_kubernetes_pod_container_port_number
-          regex: default;8002
-          action: keep
+        static_configs:
+        - targets: ['CLUSTER-IP:8002']
