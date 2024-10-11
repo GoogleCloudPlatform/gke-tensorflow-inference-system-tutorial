@@ -212,7 +212,7 @@ def main():
   )
   parser.add_argument(
     '--calib-image-dir',
-    default='gs://path-to-imagenet-dataset',
+    default='gs://cloud-tpu-test-datasets/fake_imagenet',
     help='path to image dataset used for calibration for an INT8 model.')
   parser.add_argument(
     '--batch-size',
